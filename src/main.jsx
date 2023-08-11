@@ -10,6 +10,8 @@ import Root from "./routes/root";
 import Users from "./components/Users";
 import Register from "./components/Register";
 import Home from "./components/Home";
+import Products from "./components/Products";
+import Cart from "./components/Cart";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: "/Users",
         element: <Users />,
+      },
+      {
+        path: "/Products",
+        element: <Products />,
+      },
+      {
+        path: "/Cart",
+        element: <Cart />,
       }
     ],
   },

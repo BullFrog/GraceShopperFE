@@ -21,12 +21,12 @@ export default function Root() {
                 <Link to={"/Home"} className="text-white text-2xl mr-10">
                   Home
                 </Link>
-                {/* <Link to={"/"} className="text-black text-2xl mr-10">
-                  Something
+                <Link to={"/Products"} className="text-black text-2xl mr-10">
+                  Products
                 </Link>
-                <Link to={"/"} className="text-white text-xl">
-                  Something
-                </Link> */}
+                <Link to={"/Cart"} className="text-white text-xl">
+                  Cart
+                </Link>
               </div>
             </div>
           </div>
