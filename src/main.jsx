@@ -12,6 +12,7 @@ import Home from "./components/Home";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

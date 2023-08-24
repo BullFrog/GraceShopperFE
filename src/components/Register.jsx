@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { RegisterPerson } from "../api/index.js";
+import { RegisterPerson } from "../api/Register";
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
