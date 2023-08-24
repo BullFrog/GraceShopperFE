@@ -7,11 +7,11 @@ import "./index.css";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Root from "./routes/root";
-import Users from "./components/Users";
 import Register from "./components/Register";
 import Home from "./components/Home";
-import Products from "./components/Products";
+import Product from "./components/Product";
 import Cart from "./components/Cart";
+
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
+        path: "/Login",
         element: <Login />,
       },
       {
@@ -36,17 +36,13 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/Users",
-        element: <Users />,
-      },
-      {
-        path: "/Products",
-        element: <Products />,
+        path: "/Product",
+        element: <Product />,
       },
       {
         path: "/Cart",
         element: <Cart />,
-      }
+      },
     ],
   },
 ]);
