@@ -12,7 +12,6 @@ import Home from "./components/Home";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/Cart",
         element: <Cart />,
+      },
+      {
+        path: "/Logout",
+        element: <Logout />,
       },
     ],
   },
