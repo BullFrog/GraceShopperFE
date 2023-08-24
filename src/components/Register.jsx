@@ -7,7 +7,7 @@ import { useState } from "react";
 // eslint-disable-next-line react/prop-types
 const Register = ({ setToken, setIsLoggedIn }) => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -17,7 +17,7 @@ const Register = ({ setToken, setIsLoggedIn }) => {
     try {
       const NewUser = {
         email: email,
-        username: username,
+        name: name,
         password: password,
       };
       const newUserToken = await RegisterPerson(NewUser);
@@ -68,9 +68,9 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             placeholder="Enter Your Username"
             type="text"
             name="username"
-            value={username}
+            value={name}
             onChange={(event) => {
-              setUsername(event.target.value);
+              setName(event.target.value);
             }}
           ></input>
           <p>{errorMessage}</p>

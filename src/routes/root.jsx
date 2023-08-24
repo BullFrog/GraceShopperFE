@@ -30,8 +30,11 @@ export default function Root() {
                 <Link to={"/Register"} className="text-white text-2xl mr-10">
                   Register
                 </Link>
-                <Link to={"/Login"} className="text-white text-2xl">
+                <Link to={"/Login"} className="text-white text-2xl mr-10">
                   Login
+                </Link>
+                <Link to={"/Logout"} className="text-white text-2xl">
+                  Logout
                 </Link>
               </div>
             </div>
