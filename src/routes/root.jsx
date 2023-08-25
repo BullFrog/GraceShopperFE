@@ -3,11 +3,13 @@ import React, {useState, useEffect} from "react";
 import { Outlet } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { myData } from "../api/myData";
+import SidebarCart from "../components/CartSidebar";
 
 export default function Root() {
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [token, setToken] = useState("");
 const [user, setUser] = useState(null);
+const [cart, setCart] = useState([])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -85,7 +87,8 @@ const [user, setUser] = useState(null);
           </div>
         </div>
       </nav>
-      <div>
+      <div className="flex">
+        <SidebarCart cart={cart} setCart={setCart}/>
         <Outlet 
         context={{
             token,
