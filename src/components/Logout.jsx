@@ -1,14 +1,15 @@
 import  { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
-const Logout = ({ setIsLoggedIn }) => {
+const Logout = () => {
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useOutletContext();
+
   useEffect(() => {
     setIsLoggedIn(false);
-    navigate("/Login");
+    navigate("/Home");
   });
   localStorage.removeItem("token");
   localStorage.removeItem("email");
-  return <div></div>;
 };
 export default Logout;
