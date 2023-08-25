@@ -1,16 +1,19 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { RegisterPerson } from "../api/Register";
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-const Register = ({ setToken, setIsLoggedIn }) => {
+const Register = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+// eslint-disable-next-line no-unused-vars
+const {token, setToken} = useOutletContext();
+const { setIsLoggedIn } = useOutletContext();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -28,7 +31,7 @@ const Register = ({ setToken, setIsLoggedIn }) => {
       localStorage.setItem("The Goods", newUserToken.token);
       setIsLoggedIn(true);
       if (newUserToken) {
-        navigate.push("/");
+        navigate("/Login");
       }
     } catch (err) {
       setErrorMessage(err.message);
@@ -62,12 +65,12 @@ const Register = ({ setToken, setIsLoggedIn }) => {
               setPassword(event.target.value);
             }}
           ></input>
-          <label className="inputLabels">Enter Your Username:</label>
+          <label className="inputLabels">Enter Your Name:</label>
           <input
             className="inputBox"
-            placeholder="Enter Your Username"
+            placeholder="Enter Your Name"
             type="text"
-            name="username"
+            name="name"
             value={name}
             onChange={(event) => {
               setName(event.target.value);

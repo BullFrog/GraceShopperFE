@@ -1,15 +1,19 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { LoginPerson } from "../api/Login";
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-const Login = ({ setToken, setIsLoggedIn }) => {
+const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+// eslint-disable-next-line no-unused-vars
+const { token, setToken } = useOutletContext();
+const { setIsLoggedIn } = useOutletContext();
+
   async function handleSubmit(event) {
     event.preventDefault();
     try {
@@ -18,15 +22,16 @@ const Login = ({ setToken, setIsLoggedIn }) => {
         password: password,
       };
       const newUserToken = await LoginPerson(NewUser);
+      console.log({ newUserToken });
       if (newUserToken.error) {
         throw new Error(newUserToken.message);
       }
 
       setToken(newUserToken);
-      localStorage.setItem("THe Goods", newUserToken.token);
+      localStorage.setItem("The Goods", newUserToken.token);
       setIsLoggedIn(true);
       if (newUserToken) {
-        navigate.push("/");
+        navigate("/Home");
       }
     } catch (err) {
       setErrorMessage(err.message);

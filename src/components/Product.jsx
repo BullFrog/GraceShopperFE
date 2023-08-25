@@ -1,4 +1,4 @@
 const Product = () => {
-<div>Hello</div>
-}
+  <div>Hello</div>;
+};
 export default Product;

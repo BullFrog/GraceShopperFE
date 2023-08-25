@@ -16,7 +16,7 @@ async function LoginPerson(UserObj) {
     });
     const result = await response.json();
 
-    return result.token;
+    return result;
   } catch (error) {
     throw error;
   }

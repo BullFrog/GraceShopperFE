@@ -9,7 +9,7 @@ async function RegisterPerson(UserObj) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: UserObj.username,
+        name: UserObj.username,
         email: UserObj.email,
         password: UserObj.password,
       }),
