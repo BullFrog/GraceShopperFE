@@ -1,7 +1,24 @@
+// eslint-disable-next-line no-unused-vars
+import React, {useState, useEffect} from "react";
 import { Outlet } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
+import { myData } from "../api/myData";
 
 export default function Root() {
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [token, setToken] = useState("");
+const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const userData = await myData(token);
+      setUser(userData);
+    };
+    if (token) {
+      fetchUser();
+    }
+  }, [token]);
+
   return (
     <div className="w-full h-2">
       <nav className="bg-black text-white">
@@ -12,13 +29,26 @@ export default function Root() {
               className={({ isActive, isPending }) =>
                 isActive ? "active" : isPending ? "pending" : ""
               }
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              token={token}
+              user={user}
+              setToken={setToken}
             >
               Grace Shopper
             </NavLink>
 
             <div className=" flex items-center">
               <div className="mr-10">
-                <Link to={"/Home"} className="text-white text-2xl mr-10">
+                <Link
+                  to={"/Home"}
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                  token={token}
+                  user={user}
+                  setToken={setToken}
+                  className="text-white text-2xl mr-10"
+                >
                   Home
                 </Link>
                 <Link to={"/Product"} className="text-white text-2xl mr-10">
@@ -27,13 +57,27 @@ export default function Root() {
                 <Link to={"/Cart"} className="text-white text-2xl mr-10">
                   Cart
                 </Link>
-                <Link to={"/Register"} className="text-white text-2xl mr-10">
+                <Link
+                  to={"/Register"}
+                  setIsLoggedIn={setIsLoggedIn}
+                  setToken={setToken}
+                  className="text-white text-2xl mr-10"
+                >
                   Register
                 </Link>
-                <Link to={"/Login"} className="text-white text-2xl mr-10">
+                <Link
+                  to={"/Login"}
+                  setIsLoggedIn={setIsLoggedIn}
+                  setToken={setToken}
+                  className="text-white text-2xl mr-10"
+                >
                   Login
                 </Link>
-                <Link to={"/Logout"} className="text-white text-2xl">
+                <Link
+                  to={"/Logout"}
+                  setIsLoggedIn={setIsLoggedIn}
+                  className="text-white text-2xl"
+                >
                   Logout
                 </Link>
               </div>
@@ -42,7 +86,16 @@ export default function Root() {
         </div>
       </nav>
       <div>
-        <Outlet />
+        <Outlet 
+        context={{
+            token,
+            setToken,
+            isLoggedIn,
+            setIsLoggedIn,
+            user,
+            setUser
+        }}
+        />
       </div>
     </div>
   );

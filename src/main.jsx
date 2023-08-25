@@ -14,6 +14,7 @@ import Cart from "./components/Cart";
 
 
 const router = createBrowserRouter([
+
   {
     path: "/",
     element: <Root />,
