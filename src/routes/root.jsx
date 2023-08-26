@@ -88,7 +88,7 @@ const [cart, setCart] = useState([])
         </div>
       </nav>
       <div className="flex">
-        <SidebarCart cart={cart} setCart={setCart}/>
+        <SidebarCart cart={cart} setCart={setCart} token={token} user={user}/>
         <Outlet 
         context={{
             token,
@@ -96,7 +96,9 @@ const [cart, setCart] = useState([])
             isLoggedIn,
             setIsLoggedIn,
             user,
-            setUser
+            setUser,
+            cart,
+            setCart
         }}
         />
       </div>
