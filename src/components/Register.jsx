@@ -27,7 +27,7 @@ const { setIsLoggedIn } = useOutletContext();
       if (newUserToken.error) {
         throw new Error(newUserToken.message);
       }
-      setToken(newUserToken);
+      setToken(newUserToken.token);
       localStorage.setItem("The Goods", newUserToken.token);
       setIsLoggedIn(true);
       if (newUserToken) {
