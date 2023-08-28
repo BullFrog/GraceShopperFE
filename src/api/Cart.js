@@ -28,9 +28,11 @@ const updateCartItem = async (id, quantity, token) => {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify(quantity),
+        body: JSON.stringify({
+            quantity: quantity
+        }),
       });
       const result = await request.json();
       console.log(result);
@@ -45,7 +47,7 @@ const removeFromCart = async (id, token) => {
             method: "DELETE",
             headers: {
                 'Content-type': "application/json",
-                Authorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
             }
         });
         const result = await request.json()
@@ -62,7 +64,7 @@ const clearCart = async (token) => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
       },
     });
     const result = await request.json();
@@ -72,5 +74,20 @@ const clearCart = async (token) => {
   }
 };
 
+//get logged in user's cart
+const getUserCart = async (token) => {
+    try {
+        const request = await fetch(`${API_URL}/users/me/cart`, {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const result = await request.json();
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}
 
-export {addItemToCart, updateCartItem, removeFromCart, clearCart}
+export {addItemToCart, updateCartItem, removeFromCart, clearCart, getUserCart}
