@@ -1,4 +1,8 @@
 import React from 'react';
+import {products} from '../api/products';
+
+
+
 
 
 const productDetails = ({ product }) => {
@@ -20,60 +24,70 @@ const ProductsHomePage = () => {
       image: 'product1.jpg',
       description: 'Description for Product 1',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 2',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 3',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 4',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 5',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 6',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 7',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 8',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 9',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     {
       name: 'Product 10',
       image: 'product2.jpg',
       description: 'Description for Product 2',
       price: ,
+      button: <button>Add to Cart</button>,
     },
     //add more products
   ];
@@ -90,4 +104,4 @@ const ProductsHomePage = () => {
   );
 };
 
-export default ProductsHomePage;
+export default Product;
