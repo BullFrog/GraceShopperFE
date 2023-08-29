@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 const SidebarCart = ({cart}) => {
     //props needed: {cart}
+    if (cart.length) {
   return (
     <div className="text-black bg-gray-300 border-2 rounded border-black w-1/4 m-5 flex-col p-3">
         <Link to={"/Cart"} className="underline">View whole cart</Link>
@@ -13,6 +14,9 @@ const SidebarCart = ({cart}) => {
       })}
     </div>
   );
+    } else {
+        return null
+    }
 };
 
 export default SidebarCart;

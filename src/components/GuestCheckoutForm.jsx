@@ -1,7 +1,10 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const GuestCheckoutForm = () => {
     //needs {cart} and {setCart} from props
+    const navigate = useNavigate()
+
     const [guest, setGuest] = useState({
         name: "",
         email: "",
@@ -10,8 +13,10 @@ const GuestCheckoutForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(guest)
-        alert("Guest order created: cart items")
-        //setCart([])
+        alert(`Order submitted: 
+        ${guest.name}, ${guest.email}, ${guest.address}`)
+        // setCart([])
+        //navigate("/Product")
     }
 
     const handleChange = (event) => {

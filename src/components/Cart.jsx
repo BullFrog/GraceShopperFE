@@ -2,6 +2,7 @@ import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { updateCartItem, removeFromCart, clearCart, getUserCart } from "../api/Cart"
 import { useEffect } from "react";
 import GuestCheckoutForm from "./GuestCheckoutForm";
+import { createOrder } from "../api/Orders";
 
 const Cart = () => {
   //props needed: {cart}, {setCart}, {token}, {isLoggedIn}, {user}
@@ -38,7 +39,7 @@ const Cart = () => {
           cart.map((item) => {
             return (
               <>
-                <div key={item.id}>
+                <div key={item.id} className="text-xl">
                   {item.name} (${item.price}){" "}
                   <button
                     className="ml-1 text-red-500"
@@ -76,7 +77,15 @@ const Cart = () => {
           })}
         <div className="m-2 mt-8 text-xl">Subtotal: ${subtotal}</div>
         {isLoggedIn ? (
-          <button className="underline mt-1">Looks good? Checkout -&gt;</button>
+          <button className="underline mt-1" onClick={() => {
+            if (confirm("Double check your information before submitting: user info")) {
+              createOrder(cart, token)
+              // clearCart(token)
+              // setCart([])
+              navigate("/Product")
+            }
+          }}
+          >Looks good? Checkout -&gt;</button>
         ) : (
           <GuestCheckoutForm />
         )}
