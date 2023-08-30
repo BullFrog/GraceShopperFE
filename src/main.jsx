@@ -11,10 +11,9 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
-
+import Profile from "./components/Profile";
 
 const router = createBrowserRouter([
-
   {
     path: "/",
     element: <Root />,
@@ -23,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/Login",
         element: <Login />,
+      },
+      {
+        path: "/Profile",
+        element: <Profile />,
       },
       {
         path: "/Home",

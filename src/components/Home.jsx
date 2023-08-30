@@ -1,20 +1,20 @@
 const Home = () => {
   return (
-    <div>
-      <img src="https://wallup.net/wp-content/uploads/2016/01/111509-landscape-nature.jpg"></img>
-      <div
-        style={{
-          position: "absolute",
-          color: "white",
-          top: "420px",
-          fontSize: "80px",
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}
-      >
-        
+    <body>
+      <img
+        src="https://cdn.wallpapersafari.com/72/27/Kn5Dz2.jpg"
+        className="w-screen h-screen"
+      ></img>
+      <div className="absolute top-80 w-screen text-6xl text-center text-white font-light">
+        All the games you will ever need
       </div>
-    </div>
+      <div
+        className="w-screen h-screen flex justify-center items-center
+    bg-gradient-to-b from-black to-grey-700"
+      >
+        products
+      </div>
+    </body>
   );
 };
 

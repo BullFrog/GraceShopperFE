@@ -11,5 +11,6 @@ const Logout = () => {
   });
   localStorage.removeItem("token");
   localStorage.removeItem("email");
+  localStorage.removeItem("cart");
 };
 export default Logout;

@@ -3,13 +3,11 @@ import React, {useState, useEffect} from "react";
 import { Outlet } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { myData } from "../api/myData";
-import SidebarCart from "../components/CartSidebar";
 
 export default function Root() {
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [token, setToken] = useState("");
 const [user, setUser] = useState(null);
-const [cart, setCart] = useState([])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -59,49 +57,57 @@ const [cart, setCart] = useState([])
                 <Link to={"/Cart"} className="text-white text-2xl mr-10">
                   Cart
                 </Link>
-                <Link
-                  to={"/Register"}
-                  setIsLoggedIn={setIsLoggedIn}
-                  setToken={setToken}
-                  className="text-white text-2xl mr-10"
-                >
-                  Register
-                </Link>
-                <Link
-                  to={"/Login"}
-                  setIsLoggedIn={setIsLoggedIn}
-                  setToken={setToken}
-                  className="text-white text-2xl mr-10"
-                >
-                  Login
-                </Link>
-                <Link
-                  to={"/Logout"}
-                  setIsLoggedIn={setIsLoggedIn}
-                  className="text-white text-2xl"
-                >
-                  Logout
-                </Link>
+                {isLoggedIn ? (
+                  <>
+                  <Link
+                      to={"/Profile"}
+                      className="text-white text-2xl mr-10"
+                    >Profile
+                    </Link>
+                  <Link
+                    to={"/Logout"}
+                    setIsLoggedIn={setIsLoggedIn}
+                    className="text-white text-2xl"
+                  >
+                    Logout
+                  </Link>
+                    </>
+                ) : (
+                  <>
+                    <Link
+                      to={"/Register"}
+                      setIsLoggedIn={setIsLoggedIn}
+                      setToken={setToken}
+                      className="text-white text-2xl mr-10"
+                    >
+                      Register
+                    </Link>
+
+                    <Link
+                      to={"/Login"}
+                      setIsLoggedIn={setIsLoggedIn}
+                      setToken={setToken}
+                      className="text-white text-2xl mr-10"
+                    >
+                      Login
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>
         </div>
       </nav>
-      <div className="flex">
-        <SidebarCart cart={cart}/>
-        <Outlet 
+      <Outlet
         context={{
-            token,
-            setToken,
-            isLoggedIn,
-            setIsLoggedIn,
-            user,
-            setUser,
-            cart,
-            setCart
+          token,
+          setToken,
+          isLoggedIn,
+          setIsLoggedIn,
+          user,
+          setUser,
         }}
-        />
-      </div>
+      />
     </div>
   );
 }
