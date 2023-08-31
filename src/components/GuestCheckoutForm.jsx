@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-const GuestCheckoutForm = () => {
+const GuestCheckoutForm = ({setCart}) => {
     //needs {cart} and {setCart} from props
     const navigate = useNavigate()
 
@@ -15,8 +15,8 @@ const GuestCheckoutForm = () => {
         console.log(guest)
         alert(`Order submitted: 
         ${guest.name}, ${guest.email}, ${guest.address}`)
-        // setCart([])
-        //navigate("/Product")
+        setCart([])
+        navigate("/Product")
     }
 
     const handleChange = (event) => {

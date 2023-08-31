@@ -13,6 +13,7 @@ const Login = () => {
 // eslint-disable-next-line no-unused-vars
 const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
 
+
     const getCart = async (token) => {
       const userCart = await getUserCart(token);
       setCart(userCart);

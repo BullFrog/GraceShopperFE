@@ -77,17 +77,20 @@ const Cart = () => {
           })}
         <div className="m-2 mt-8 text-xl">Subtotal: ${subtotal}</div>
         {isLoggedIn ? (
-          <button className="underline mt-1" onClick={() => {
+          <button className="underline mt-1" onClick={ async () => {
             if (confirm("Double check your information before submitting: user info")) {
-              createOrder(cart, token)
-              // clearCart(token)
-              // setCart([])
-              navigate("/Product")
+              const order = await createOrder(cart, token)
+                if (order) {
+                  clearCart(token)
+                  setCart([])
+                  alert(`Order #${order.id} created succesfully. Check your profile for full order details`)
+                  navigate("/Product")
+                }
             }
           }}
           >Looks good? Checkout -&gt;</button>
         ) : (
-          <GuestCheckoutForm />
+          <GuestCheckoutForm setCart={setCart}/>
         )}
         <div>
           <button
