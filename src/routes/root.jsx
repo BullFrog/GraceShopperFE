@@ -8,6 +8,7 @@ export default function Root() {
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [token, setToken] = useState("");
 const [user, setUser] = useState(null);
+const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -106,6 +107,8 @@ const [user, setUser] = useState(null);
           setIsLoggedIn,
           user,
           setUser,
+          cart,
+          setCart
         }}
       />
     </div>
