@@ -9,12 +9,13 @@ const createOrder = async (products, token) => {
                 'Content-type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(
+            body: JSON.stringify({
                 products
-            )
+        })
         })
         const result = await request.json()
         console.log(result)
+        return result
     } catch (error) {
         console.error(error)
     }

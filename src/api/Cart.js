@@ -9,12 +9,12 @@ const addItemToCart = async (productId, quantity, token) => {
                 'Content-type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(
-                quantity
-            )
+            body: JSON.stringify({
+                quantity: quantity
+        })
         });
         const result = await request.json()
-        console.log(result)
+        return result 
     } catch (error) {
         console.error(error)
     }
@@ -36,6 +36,7 @@ const updateCartItem = async (id, quantity, token) => {
       });
       const result = await request.json();
       console.log(result);
+      return result
     } catch (error) {
       console.error(error);
     }
@@ -51,7 +52,7 @@ const removeFromCart = async (id, token) => {
             }
         });
         const result = await request.json()
-        console.log(result)
+        return result
     } catch (error) {
         console.error(error)
     }
@@ -68,7 +69,7 @@ const clearCart = async (token) => {
       },
     });
     const result = await request.json();
-    console.log(result);
+    return result
   } catch (error) {
     console.error(error);
   }
