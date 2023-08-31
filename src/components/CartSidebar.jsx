@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
-const SidebarCart = ({cart}) => {
+const SidebarCart = () => {
     //props needed: {cart}
+    const {cart} = useOutletContext();
     if (cart.length) {
   return (
     <div className="text-black bg-gray-300 border-2 rounded border-black w-1/4 m-5 flex-col p-3">
