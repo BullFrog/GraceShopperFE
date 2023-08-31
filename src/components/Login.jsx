@@ -10,7 +10,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-const { setIsLoggedIn, setCart, setToken } = useOutletContext();
+// eslint-disable-next-line no-unused-vars
+const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
+
 
     const getCart = async (token) => {
       const userCart = await getUserCart(token);
@@ -36,7 +38,7 @@ const { setIsLoggedIn, setCart, setToken } = useOutletContext();
       setIsLoggedIn(true);
       getCart(newUserToken.token);
       if (newUserToken) {
-        navigate("/Home");
+        navigate("/");
       }
     } catch (err) {
       setErrorMessage(err.message);
