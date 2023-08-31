@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
+const { setIsLoggedIn, setCart, setToken } = useOutletContext();
 
     const getCart = async (token) => {
       const userCart = await getUserCart(token);

@@ -36,4 +36,22 @@ const getOrderById = async (orderId, token) => {
         console.error(error)
     }
 }
-export {createOrder, getOrderById}
+
+//needs user's token
+const getUserOrders = async (token) => {
+    try {
+        const request = await fetch(`${API_URL}/me/orders`, {
+            headers: {
+                'ContentType': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        const result = await request.json()
+        console.log(result)
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export {createOrder, getOrderById, getUserOrders}
