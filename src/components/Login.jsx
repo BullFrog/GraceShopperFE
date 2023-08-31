@@ -37,7 +37,7 @@ const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
       setIsLoggedIn(true);
       getCart(newUserToken.token);
       if (newUserToken) {
-        navigate("/Home");
+        navigate("/");
       }
     } catch (err) {
       setErrorMessage(err.message);
