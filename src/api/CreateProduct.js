@@ -3,7 +3,7 @@ const API_URL = "http://localhost:3000/api";
 
 async function createProduct(prodObj) {
   try {
-    const response = await fetch(`${API_URL}/Products`, {
+    const response = await fetch(`${API_URL}/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
