@@ -12,7 +12,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
 const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
 
-    const getCart = async () => {
+    const getCart = async (token) => {
       const userCart = await getUserCart(token);
       setCart(userCart);
     };
@@ -34,6 +34,7 @@ const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
       localStorage.setItem("token", newUserToken.token);
       localStorage.setItem("email", NewUser.email)
       setIsLoggedIn(true);
+      getCart(newUserToken.token);
       if (newUserToken) {
         navigate("/Home");
       }
@@ -82,7 +83,7 @@ const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
           ></input>
 
           <p>{errorMessage}</p>
-          <button onClick={getCart} className="inline-block rounded px-3 pb-2.5 pt-3 text-sm font-medium uppercase bg-blue-600 text-white">
+          <button className="inline-block rounded px-3 pb-2.5 pt-3 text-sm font-medium uppercase bg-blue-600 text-white">
             Login
           </button>
         </div>
