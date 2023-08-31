@@ -26,7 +26,7 @@ const [cart, setCart] = useState([]);
         <div className="container mx-auto">
           <div className="flex items-center justify-between px-10 py-8 text-3xl">
             <NavLink
-              to={`/Home`}
+              to={`/`}
               className={({ isActive, isPending }) =>
                 isActive ? "active" : isPending ? "pending" : ""
               }
@@ -42,7 +42,7 @@ const [cart, setCart] = useState([]);
             <div className=" flex items-center">
               <div className="mr-10">
                 <Link
-                  to={"/Home"}
+                  to={"/"}
                   isLoggedIn={isLoggedIn}
                   setIsLoggedIn={setIsLoggedIn}
                   token={token}
