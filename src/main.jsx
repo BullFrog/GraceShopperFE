@@ -12,6 +12,9 @@ import Home from "./components/Home";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 import Profile from "./components/Profile";
+import AdminLogin from "./components/AdminLogin";
+import AdminOrders from "./components/AdminOrders";
+import AdminProducts from "./components/AdminProducts";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +53,18 @@ const router = createBrowserRouter([
       {
         path: "/Logout",
         element: <Logout />,
+      },
+      {
+        path: "/admin/login",
+        element: <AdminLogin />,
+      },
+      {
+        path: "/admin/products",
+        element: <AdminProducts />,
+      },
+      {
+        path: "/admin/orders",
+        element: <AdminOrders />,
       },
     ],
   },
