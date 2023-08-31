@@ -1,8 +1,6 @@
 import React from 'react';
-import {products} from '../api/products';
-
-
-
+import {products} from '../api/GetAllProducts';
+import { useState } from "react";
 
 
 const productDetails = ({ product }) => {
