@@ -40,7 +40,7 @@ const Register = () => {
 
   return (
     <div
-      className="loginContainer w-screen h-screen flex justify-center items-center
+      className="w-screen h-screen flex justify-center items-center
     bg-gradient-to-t from-black to-grey-700"
       id="registerBox"
     >

@@ -13,7 +13,7 @@ const SingleProduct = ({ product, addCart }) => {
       <p className="description">{product.description}</p>
       <p className="price">Price: ${product.price}</p>
       <img
-        className="product-card-image"
+        className=""
         src={product.image}
         alt={product.name}
       />
