@@ -110,13 +110,16 @@ const [cart, setCart] = useState([]);
         }}
       />
       <body className=" bg-black h-52 text-white flex place-content-center underline decoration-1">
-        <span className="mt-7">
-          Account
-          <span className="ml-80 mt-7">
-            Help
-            <span className="ml-80 mt-7">Orders</span>
-          </span>
-        </span>
+        <span className="mt-7">Account</span>
+        <Link
+          to={"/admin/login"}
+          setIsLoggedIn={setIsLoggedIn}
+          setToken={setToken}
+          className="ml-80 mt-7"
+        >
+          Admin Login
+        </Link>
+        <span className="ml-80 mt-7">Orders</span>
       </body>
     </div>
   );
