@@ -3,12 +3,14 @@ import React, {useState, useEffect} from "react";
 import { Outlet } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { myData } from "../api/myData";
+import AdminNavbar from "../components/AdminNavbar";
 
 export default function Root() {
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [token, setToken] = useState("");
 const [user, setUser] = useState({});
 const [cart, setCart] = useState([]);
+const [admin, setAdmin] = useState(false)
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -22,6 +24,7 @@ const [cart, setCart] = useState([]);
 
   return (
     <div className="w-full h-2">
+      {admin ? <AdminNavbar setToken={setToken} setAdmin={setAdmin}/> :
       <nav className="bg-black text-white">
         <div className="container mx-auto">
           <div className="flex items-center justify-between px-10 py-8 text-3xl">
@@ -96,7 +99,7 @@ const [cart, setCart] = useState([]);
             </div>
           </div>
         </div>
-      </nav>
+      </nav>}
       <Outlet
         context={{
           token,
@@ -107,6 +110,8 @@ const [cart, setCart] = useState([]);
           setUser,
           cart,
           setCart,
+          admin,
+          setAdmin
         }}
       />
       <body className=" bg-black h-52 text-white flex place-content-center underline decoration-1">
