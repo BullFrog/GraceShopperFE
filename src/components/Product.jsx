@@ -49,7 +49,6 @@ const Product = () => {
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
-
   const handleClick = () => {
     navigate("/");
     navigate.push(`/products/${product.id}`);
