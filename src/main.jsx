@@ -15,6 +15,8 @@ import Profile from "./components/Profile";
 import AdminLogin from "./components/AdminLogin";
 import AdminOrders from "./components/AdminOrders";
 import AdminProducts from "./components/AdminProducts";
+import AdminSingleOrder from "./components/AdminSingleOrder";
+import AdminSingleProduct from "./components/AdminSingleProduct";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
         path: "/admin/orders",
         element: <AdminOrders />,
       },
+      {
+        path: "/admin/products/:productId",
+        element: <AdminSingleProduct />
+      },
+      {
+        path: "/admin/orders/:orderId",
+        element: <AdminSingleOrder />
+      }
     ],
   },
 ]);
