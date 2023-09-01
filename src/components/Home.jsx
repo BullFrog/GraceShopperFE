@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GetAllProducts } from "../api/GetAllProducts";
@@ -37,7 +38,7 @@ const Home = () => {
       </div>
       <div
         className="w-screen  flex justify-center items-center
-    bg-gradient-to-b from-black to-grey-700 overflow-hidden"
+    bg-gradient-to-b from-black to-grey-700 overflow-y-scroll"
       >
         <div className="flex flex-wrap  place-content-center mb-14">
           {products?.map((product) => (

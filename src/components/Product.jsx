@@ -30,7 +30,7 @@ const Product = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-t from-black to-grey-700 w-screen  overflow-hidden">
+    <div className="bg-gradient-to-t from-black to-grey-700 w-screen h-screen max-h-screen overflow-y-scroll">
       <h2 className="text-6xl text-center mt-5 mb-10 underline decoration-2 ">
         Products
       </h2>
