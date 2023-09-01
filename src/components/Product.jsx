@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { GetAllProducts } from '../api/GetAllProducts';
@@ -7,8 +8,9 @@ import SidebarCart from "../components/CartSidebar";
 
 
 const Product = () => {
-  const { cart } = useOutletContext();
   const [products, setProducts] = useState([]);
+  const { cart } = useOutletContext();
+
 
   async function getAllProducts() {
     try {
@@ -28,22 +30,26 @@ const Product = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-t from-black to-grey-700">
-      <SidebarCart cart={cart} />
-      <h2 className="text-6xl text-center mt-5 mb-10 underline decoration-2">Products</h2>
-      <div className="flex flex-wrap m-5 place-content-center">
+    <div className="bg-gradient-to-t from-black to-grey-700 w-screen  overflow-hidden">
+      <h2 className="text-6xl text-center mt-5 mb-10 underline decoration-2 ">
+        Products
+      </h2>
+      <div className="flex flex-wrap m-5 place-content-center mb-14">
         {products?.map((product) => (
           <div className="" key={product.id}>
             <ProductCard product={product} />
           </div>
         ))}
       </div>
+      <SidebarCart cart={cart} />
     </div>
   );
 };
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
+
+
   const handleClick = () => {
     navigate("/");
     navigate.push(`/products/${product.id}`);
