@@ -22,7 +22,6 @@ const AdminOrders = () => {
 
   return (
     <>
-      <AdminNavbar setToken={setToken}/>
       <div className="underline text-4xl text-center m-4">All orders</div>
       {orders.length && orders.map((order) => {
         let date = order.orderDate

@@ -7,7 +7,6 @@ const AdminProducts = () => {
   const [products, setProducts] = useState([])
   return (
     <>
-    <AdminNavbar />
     <AdminNewProductForm />
     <p>admin products page</p>
     </>

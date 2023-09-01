@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom"
 
 const AdminSingleOrder = () => {
-    const { orderId } = useParams
+    const { orderId } = useParams();
     return (
-        console.log("in progress")
+        <div>{orderId}</div>
     )
 }
 

@@ -8,7 +8,7 @@ const AdminLogin = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const {setToken} = useOutletContext();
+  const {setToken, setAdmin} = useOutletContext();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -18,6 +18,7 @@ const AdminLogin = () => {
         if (admin) {
             console.log(admin)
             setToken(admin.token)
+            setAdmin(true)
             alert(`${admin.message}`)
             navigate("/admin/products")
         }
