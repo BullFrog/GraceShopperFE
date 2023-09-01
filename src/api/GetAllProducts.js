@@ -4,15 +4,14 @@ const GetAllProducts = async () => {
   try {
     const response = await fetch(`${API_URL}/products`, {
       headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
+        'Content-Type': "application/json",
+      },                
+    })
+  
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (error) {
-    console.error(error);
+    console.error("error getting all products", error);
   }
 }
 

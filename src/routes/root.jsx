@@ -60,19 +60,17 @@ const [cart, setCart] = useState([]);
                 </Link>
                 {isLoggedIn ? (
                   <>
-                  <Link
-                      to={"/Profile"}
-                      className="text-white text-2xl mr-10"
-                    >Profile
+                    <Link to={"/Profile"} className="text-white text-2xl mr-10">
+                      Profile
                     </Link>
-                  <Link
-                    to={"/Logout"}
-                    setIsLoggedIn={setIsLoggedIn}
-                    className="text-white text-2xl"
-                  >
-                    Logout
-                  </Link>
-                    </>
+                    <Link
+                      to={"/Logout"}
+                      setIsLoggedIn={setIsLoggedIn}
+                      className="text-white text-2xl"
+                    >
+                      Logout
+                    </Link>
+                  </>
                 ) : (
                   <>
                     <Link
@@ -108,9 +106,18 @@ const [cart, setCart] = useState([]);
           user,
           setUser,
           cart,
-          setCart
+          setCart,
         }}
       />
+      <body className=" bg-black h-52 text-white flex place-content-center underline decoration-1">
+        <span className="mt-7">
+          Account
+          <span className="ml-80 mt-7">
+            Help
+            <span className="ml-80 mt-7">Orders</span>
+          </span>
+        </span>
+      </body>
     </div>
   );
 }
