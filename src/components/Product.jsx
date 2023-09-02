@@ -12,7 +12,7 @@ import { getUserCart } from '../api/Cart';
 const Product = () => {
   const [products, setProducts] = useState([]);
   const { cart, setCart, isLoggedIn, token } = useOutletContext();
-
+  
 
   async function getAllProducts() {
     try {
@@ -67,13 +67,22 @@ const ProductCard = ({ product, cart, setCart, isLoggedIn, token }) => {
         setCart(userCart);
       }
     } else { 
-      console.log(cart) 
-      cart.push({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      quantity: 1
-      })
+      console.log("cart before adding:", cart) 
+      const inCart = cart.find((item) => {
+          if (item.id === product.id) {
+            return true
+          }
+        })
+      if (inCart) {
+        alert("Item already in cart")
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          quantity: 1,
+        });
+      }
       console.log("cart after adding:", cart)
       
     }
