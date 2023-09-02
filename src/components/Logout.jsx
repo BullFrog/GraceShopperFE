@@ -4,7 +4,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 const Logout = () => {
   const navigate = useNavigate();
   const { setIsLoggedIn } = useOutletContext();
-  const { setToken } = useOutletContext();
+  const { setToken, setCart } = useOutletContext();
   const [ setName ] = useState("");
   const [ setEmail ] = useState("");
   const [ setPassword ] = useState("");
@@ -13,11 +13,12 @@ const Logout = () => {
   useEffect(() => {
     setIsLoggedIn(false);
     setToken("");
+    setCart([]);
     setName;
     setEmail;
     setPassword;
     setErrorMessage;
-    navigate("/Home");
+    navigate("/");
   });
   localStorage.removeItem("token");
   localStorage.removeItem("email");

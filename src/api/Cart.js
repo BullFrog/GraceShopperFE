@@ -1,7 +1,6 @@
 const API_URL = "http://localhost:3000/api";
 //should receive a { quantity: N } object, the id from product, and user's token
 const addItemToCart = async (productId, quantity, token) => {
-    console.log(productId, quantity, token)
     try {
         const request = await fetch(`${API_URL}/cart/${productId}`, {
             method: "POST",
@@ -14,6 +13,7 @@ const addItemToCart = async (productId, quantity, token) => {
         })
         });
         const result = await request.json()
+        console.log(result)
         return result 
     } catch (error) {
         console.error(error)

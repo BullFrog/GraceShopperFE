@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { GetAllProducts } from '../api/GetAllProducts';
 import { useOutletContext } from "react-router-dom";
 import SidebarCart from "../components/CartSidebar";
+import { addItemToCart } from '../api/Cart';
+import { getUserCart } from '../api/Cart';
 
 
 const Product = () => {
   const [products, setProducts] = useState([]);
-  const { cart } = useOutletContext();
+  const { cart, setCart, isLoggedIn, token } = useOutletContext();
 
 
   async function getAllProducts() {
@@ -34,27 +36,47 @@ const Product = () => {
       <h2 className="text-6xl text-center mt-5 mb-10 underline decoration-2 ">
         Products
       </h2>
-      <div className="flex flex-wrap m-5 place-content-center mb-14">
-        {products?.map((product) => (
-          <div className="" key={product.id}>
-            <ProductCard product={product} />
-          </div>
-        ))}
+      <div className='flex'>
+        <SidebarCart cart={cart} />
+        <div className="flex flex-wrap m-5 place-content-center mb-14">
+          {products?.map((product) => (
+            <div className="" key={product.id}>
+              <ProductCard product={product} setCart={setCart} isLoggedIn={isLoggedIn} token={token} cart={cart}/>
+            </div>
+          ))}
+        </div>
       </div>
-      <SidebarCart cart={cart} />
     </div>
   );
 };
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, cart, setCart, isLoggedIn, token }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/");
-    navigate.push(`/products/${product.id}`);
+    navigate(`/products/${product.id}`);
   };
-  const handleButtonClick = () => {
-    console.log("added to cart!");
+
+  const handleButtonClick = async () => {
+    if (isLoggedIn) {
+      const addedToCart = await addItemToCart(product.id, 1, token)
+      if (addedToCart.message) {
+        alert(addedToCart.message);
+      } else {
+        const userCart = await getUserCart(token);
+        setCart(userCart);
+      }
+    } else { 
+      console.log(cart) 
+      cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1
+      })
+      console.log("cart after adding:", cart)
+      
+    }
   };
 
   return (
