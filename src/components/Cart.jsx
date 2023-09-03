@@ -10,7 +10,8 @@ const Cart = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    getCart()
+    if (isLoggedIn) {
+      getCart() }
   }, [])
 
   const getCart = async () => {
