@@ -1,24 +1,25 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { useParams } from "react-router-dom";
 
-const SingleProduct = ({ product, addCart }) => {
-  const handleClick = () => {
-    // Handle click event, e.g., open a modal or navigate to a new page
-    console.log("Product clicked:", product);
-  };
+const SingleProductPage = ({ product }) => {
 
+  let { productId } = useParams();
+  const thisProduct = product[productId - 1];
+  console.log("thisProduct is ", thisProduct);
   return (
-    <div className="product" onClick={handleClick}>
-      <h3>{product.name}</h3>
-      <p className="description">{product.description}</p>
-      <p className="price">Price: ${product.price}</p>
+    <div className="">
+      <h3>{thisProduct.name}</h3>
+      <p className="">{thisProduct.description}</p>
+      <p className="">Price: ${thisProduct.price}</p>
       <img
         className=""
-        src={product.image}
-        alt={product.name}
+        src={thisProduct.image}
+        alt={thisProduct.name}
       />
+      <button>Add to Cart</button>
     </div>
   );
 };
 
-export default SingleProduct;
+export default SingleProductPage;

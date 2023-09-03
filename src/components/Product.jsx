@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { GetAllProducts } from '../api/GetAllProducts';
 import { useOutletContext } from "react-router-dom";
 import SidebarCart from "../components/CartSidebar";
-
+// import SingleProductPage from "../components/SingleProduct"
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -49,10 +49,20 @@ const Product = () => {
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/");
-    navigate.push(`/products/${product.id}`);
-  };
+  async function handleClick() {
+    try {
+      const result = await navigate.push(`/Product/${product.id}`);
+      console.log(result);
+      if (result) {
+        console.log("success");
+        navigate("/SingleProduct");
+        return result;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleButtonClick = () => {
     console.log("added to cart!");
   };

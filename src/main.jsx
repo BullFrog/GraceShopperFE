@@ -17,6 +17,7 @@ import AdminOrders from "./components/AdminOrders";
 import AdminProducts from "./components/AdminProducts";
 import AdminSingleOrder from "./components/AdminSingleOrder";
 import AdminSingleProduct from "./components/AdminSingleProduct";
+import SingleProductPage from "./components/SingleProduct";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         element: <Product />,
       },
       {
+        path: "/SingleProduct",
+        element: <SingleProductPage />,
+      },
+      {
         path: "/Cart",
         element: <Cart />,
       },
@@ -70,12 +75,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/products/:productId",
-        element: <AdminSingleProduct />
+        element: <AdminSingleProduct />,
       },
       {
         path: "/admin/orders/:orderId",
-        element: <AdminSingleOrder />
-      }
+        element: <AdminSingleOrder />,
+      },
     ],
   },
 ]);

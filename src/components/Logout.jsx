@@ -17,7 +17,7 @@ const Logout = () => {
     setEmail;
     setPassword;
     setErrorMessage;
-    navigate("/Home");
+    navigate("/");
   });
   localStorage.removeItem("token");
   localStorage.removeItem("email");
