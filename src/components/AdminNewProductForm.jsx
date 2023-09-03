@@ -1,7 +1,7 @@
 import { createProduct } from "../api/Admin";
 import { useState } from "react";
 
-const AdminNewProductForm = () => {
+const AdminNewProductForm = ({token}) => {
   const [newProduct, setNewProduct] = useState({
     name: "",
     category: "",
