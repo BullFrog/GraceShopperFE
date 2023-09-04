@@ -27,7 +27,7 @@ const AdminProducts = () => {
       <h2 className="text-6xl text-center mt-5 mb-10 underline decoration-2 ">
         Products
       </h2>
-      <AdminNewProductForm token={token}/>
+      <AdminNewProductForm token={token} getAllProducts={getAllProducts}/>
       <div className="flex flex-wrap m-5 place-content-center mb-14">
         {products?.map((product) => (
           <div className="" key={product.id}>
