@@ -51,15 +51,15 @@ const getAdminSingleProduct = async (token, productId) => {
  
 const createProduct = async (token, newProduct) => {
      try {
-       const request = await fetch(`${API_URL}/admin/products`, {
+       const request = await fetch(`${API_URL}/admin/products/new`, {
         method: "POST", 
         headers: {
            "Content-type": "application/json",
            'Authorization': `Bearer ${token}`,
          },
-         body: JSON.stringify({
+         body: JSON.stringify(
             newProduct
-        })
+        )
        });
        const result = await request.json();
        return result;
