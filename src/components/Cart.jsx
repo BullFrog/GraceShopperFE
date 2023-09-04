@@ -37,7 +37,7 @@ const Cart = () => {
           Here&apos;s what you&apos;ve got so far:
         </h3>
         {cart &&
-          cart.map((item) => {
+          cart.map((item, index) => {
             return (
               <>
                 <div key={item.id} className="text-xl">
@@ -45,8 +45,16 @@ const Cart = () => {
                   <button
                     className="ml-1 text-red-500"
                     onClick={() => {
+                      const newQuantity = item.quantity - 1;
+                      if (newQuantity < 1) {
+                        alert("You can't put less than 1 of an item in your cart; remove it instead")
+                      }
+                       else if (isLoggedIn && token) {
                       updateCartItem(item.id, item.quantity - 1, token);
                       getCart();
+                    } else {
+                      console.log('quantity - 1')
+                    }
                     }}
                   >
                     -
@@ -54,8 +62,16 @@ const Cart = () => {
                   {item.quantity}{" "}
                   <button
                     onClick={() => {
-                      updateCartItem(item.id, item.quantity + 1, token);
+                      const newQuantity = item.quantity + 1;
+                      if (newQuantity >= item.inventory) {
+                        alert("You can't purchase more than is in stock!");
+                      } 
+                       else if (isLoggedIn && token) {
+                      updateCartItem(item.id, newQuantity, token);
                       getCart();
+                      } else {
+                       console.log('quantity + 1')
+                      }
                     }}
                   >
                     +
@@ -65,9 +81,18 @@ const Cart = () => {
                   <button
                     className="underline mr-3"
                     onClick={() => {
-                      removeFromCart(item.id, token);
+                      if (isLoggedIn && token) {
+                        removeFromCart(item.id, token);
                       getCart();
-                    }}
+                    } else {
+                      const { [index]: removedItem, ...rest } = cart
+                      console.log(removedItem)
+                      console.log(rest)
+                      
+                      
+                    }
+                  }
+                  }
                   >
                     -remove-{" "}
                   </button>{" "}

@@ -81,6 +81,7 @@ const ProductCard = ({ product, cart, setCart, isLoggedIn, token }) => {
           name: product.name,
           price: product.price,
           quantity: 1,
+          inventory: product.inventory
         });
       }
       console.log("cart after adding:", cart)
