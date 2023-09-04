@@ -18,7 +18,6 @@ const Product = () => {
     try {
       const result = await GetAllProducts();
       if (result) {
-        console.log("getting all products", result);
         setProducts(result);
         return result;
       }
@@ -54,7 +53,7 @@ const ProductCard = ({ product, cart, setCart, isLoggedIn, token }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/products/${product.id}`);
+ navigate(`/SingleProduct/${product.id}`);
   };
 
   const handleButtonClick = async () => {
@@ -97,6 +96,7 @@ const ProductCard = ({ product, cart, setCart, isLoggedIn, token }) => {
       <img
         onClick={handleClick}
         className="ml-3 rounded-xl"
+        id="image"
         src={product.image}
         alt={product.name}
       />

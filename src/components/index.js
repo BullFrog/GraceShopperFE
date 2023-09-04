@@ -5,5 +5,6 @@ import Home from "./Home";
 import Product from "./Product";
 import Cart from "./Cart";
 import Profile from "./Profile";
+import SingleProduct from "./SingleProduct";
 
-export { Login, Register, Logout, Home, Product, Cart, Profile };
+export { SingleProduct, Login, Register, Logout, Home, Product, Cart, Profile };
