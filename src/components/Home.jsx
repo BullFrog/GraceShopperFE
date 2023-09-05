@@ -14,7 +14,6 @@ const Home = () => {
     try {
       const result = await GetAllProducts();
       if (result) {
-        console.log("getting all products", result);
         setProducts(result);
         return result;
       }
