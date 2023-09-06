@@ -119,28 +119,30 @@ const Cart = () => {
           </button>
         </div>
         {isLoggedIn ? (
-          <button
-            className="underline mt-1"
-            onClick={async () => {
-              if (
-                confirm(
-                  "Double check your information before submitting: user info"
-                )
-              ) {
-                const order = await createOrder(cart, token);
-                if (order) {
-                  clearCart(token);
-                  setCart([]);
-                  alert(
-                    `Order #${order.id} created succesfully. Check your profile for full order details`
-                  );
-                  navigate("/Product");
+          <div className="flex flex-wrap place-content-center">
+            <button
+              className="underline mt-2 inline-block rounded-3xl px-3 pb-2.5 pt-3 text-md font-dark bg-blue-600 text-white"
+              onClick={async () => {
+                if (
+                  confirm(
+                    "Double check your information before submitting: user info"
+                  )
+                ) {
+                  const order = await createOrder(cart, token);
+                  if (order) {
+                    clearCart(token);
+                    setCart([]);
+                    alert(
+                      `Order #${order.id} created succesfully. Check your profile for full order details`
+                    );
+                    navigate("/Product");
+                  }
                 }
-              }
-            }}
-          >
-            Looks good? Checkout -&gt;
-          </button>
+              }}
+            >
+              Looks good? Checkout -&gt;
+            </button>
+          </div>
         ) : (
           <GuestCheckoutForm setCart={setCart} />
         )}
