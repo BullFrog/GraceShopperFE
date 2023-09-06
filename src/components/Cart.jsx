@@ -32,29 +32,33 @@ const Cart = () => {
       return total + itemTotal;
     }, 0);
     return (
-      <div>
-        <h3 className="text-3xl text-center mb-2">
+      <div className="bg-gradient-to-t from-black to-grey-700 h-screen">
+        <h3 className="text-3xl text-center m-6">
           Here&apos;s what you&apos;ve got so far:
         </h3>
         {cart &&
           cart.map((item, index) => {
             return (
               <>
-                <div key={item.id} className="text-xl">
+                <div
+                  key={item.id}
+                  className="text-xl uppercase flex justify-center items-center"
+                >
                   {item.name} (${item.price}){" "}
                   <button
                     className="ml-1 text-red-500"
                     onClick={() => {
                       const newQuantity = item.quantity - 1;
                       if (newQuantity < 1) {
-                        alert("You can't put less than 1 of an item in your cart; remove it instead")
+                        alert(
+                          "You can't put less than 1 of an item in your cart; remove it instead"
+                        );
+                      } else if (isLoggedIn && token) {
+                        updateCartItem(item.id, item.quantity - 1, token);
+                        getCart();
+                      } else {
+                        console.log("quantity - 1");
                       }
-                       else if (isLoggedIn && token) {
-                      updateCartItem(item.id, item.quantity - 1, token);
-                      getCart();
-                    } else {
-                      console.log('quantity - 1')
-                    }
                     }}
                   >
                     -
@@ -65,34 +69,30 @@ const Cart = () => {
                       const newQuantity = item.quantity + 1;
                       if (newQuantity >= item.inventory) {
                         alert("You can't purchase more than is in stock!");
-                      } 
-                       else if (isLoggedIn && token) {
-                      updateCartItem(item.id, newQuantity, token);
-                      getCart();
+                      } else if (isLoggedIn && token) {
+                        updateCartItem(item.id, newQuantity, token);
+                        getCart();
                       } else {
-                       console.log('quantity + 1')
+                        console.log("quantity + 1");
                       }
                     }}
                   >
                     +
                   </button>
                 </div>
-                <div className="m-3">
+                <div className="m-3 flex flex-wrap place-content-center">
                   <button
-                    className="underline mr-3"
+                    className="underline mr-3 inline-block rounded-3xl px-2 text-sm font-light uppercase bg-black text-white"
                     onClick={() => {
                       if (isLoggedIn && token) {
                         removeFromCart(item.id, token);
-                      getCart();
-                    } else {
-                      const { [index]: removedItem, ...rest } = cart
-                      console.log(removedItem)
-                      console.log(rest)
-                      
-                      
-                    }
-                  }
-                  }
+                        getCart();
+                      } else {
+                        const { [index]: removedItem, ...rest } = cart;
+                        console.log(removedItem);
+                        console.log(rest);
+                      }
+                    }}
                   >
                     -remove-{" "}
                   </button>{" "}
@@ -101,26 +101,12 @@ const Cart = () => {
               </>
             );
           })}
-        <div className="m-2 mt-8 text-xl">Subtotal: ${subtotal}</div>
-        {isLoggedIn ? (
-          <button className="underline mt-1" onClick={ async () => {
-            if (confirm("Double check your information before submitting: user info")) {
-              const order = await createOrder(cart, token)
-                if (order) {
-                  clearCart(token)
-                  setCart([])
-                  alert(`Order #${order.id} created succesfully. Check your profile for full order details`)
-                  navigate("/Product")
-                }
-            }
-          }}
-          >Looks good? Checkout -&gt;</button>
-        ) : (
-          <GuestCheckoutForm setCart={setCart}/>
-        )}
-        <div>
+        <div className="m-2 mt-8 text-xl underline flex flex-wrap place-content-center mb-14">
+          Subtotal: ${subtotal}
+        </div>
+        <div className="flex flex-wrap place-content-center">
           <button
-            className="mt-5 border border-red-500 rounded p-1"
+            className="inline-block rounded-3xl px-3 pb-2.5 pt-3 text-sm font-dark uppercase bg-blue-600 text-white"
             onClick={() => {
               if (confirm("Are you sure you want to clear your cart?")) {
                 clearCart(token);
@@ -132,6 +118,32 @@ const Cart = () => {
             Clear Cart
           </button>
         </div>
+        {isLoggedIn ? (
+          <button
+            className="underline mt-1"
+            onClick={async () => {
+              if (
+                confirm(
+                  "Double check your information before submitting: user info"
+                )
+              ) {
+                const order = await createOrder(cart, token);
+                if (order) {
+                  clearCart(token);
+                  setCart([]);
+                  alert(
+                    `Order #${order.id} created succesfully. Check your profile for full order details`
+                  );
+                  navigate("/Product");
+                }
+              }
+            }}
+          >
+            Looks good? Checkout -&gt;
+          </button>
+        ) : (
+          <GuestCheckoutForm setCart={setCart} />
+        )}
       </div>
     );
   }

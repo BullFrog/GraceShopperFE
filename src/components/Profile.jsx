@@ -1,18 +1,19 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { useOutletContext } from "react-router-dom";
 import { getUserOrders } from "../api/Orders";
 
-const Profile = ({ token, user }) => {
-  const [orders, setOrders] = useState([]);
-
+const Profile = () => {
+  const {user, token} = useOutletContext();
+  const [order, setOrder] = useState([]);
+  
   async function getPreviousOrders() {
     try {
       const result = await getUserOrders(token);
-
-      if (result.success) {
-        setOrders(result.orders);
+      console.log(result)
+      if (result) {
+        setOrder(result);
       }
     } catch (error) {
       console.log("error getting previous orders", error);
@@ -21,56 +22,54 @@ const Profile = ({ token, user }) => {
   useEffect(() => {
     getPreviousOrders();
   }, []);
-
+  
   return (
-    <div id="profile">
-      <div id="ProfileHeader">
-        <h1 className="ProfileTitle">My Profile</h1>
-        <div className="UserCard">
-          <h2 className="UserInfo">
-            Name: <span className="Info">{user.name}</span>
+    <div
+      className="w-screen h-screen flex justify-center items-center
+    bg-gradient-to-t from-black to-grey-700 overflow-y-scroll"
+    >
+      <div className="p-10 bg-black rounded-xl drop-shadow-lg space-y-5 text-white">
+        <h1 className="text-3xl text-center pb-3">My Profile</h1>
+        <div>
+          <h2 className="w-96 px-3 py-2 rounded-md border border-slate-400">
+            <span className="underline decoration-1">Name: </span>
+            <span className="pl-2">{user.name}</span>
           </h2>
-          <h3 className="UserInfo">
-            Username: <span className="Info">{user.username}</span>
-          </h3>
-          <h3 className="UserInfo">
-            Email: <span className="Info">{user.email}</span>
-          </h3>
-          <Link to={`edit-profile/${user.id}`} state={user}>
-            <button className="Button">Edit Username/Email</button>
-          </Link>
+          <h2 className="w-96 px-3 py-2 rounded-md border border-slate-400">
+            <span className="underline decoration-1">Email: </span>
+            <span className="pl-2">{user.email}</span>
+          </h2>
+          <h2 className="w-96 px-3 py-2 rounded-md border border-slate-400">
+            <span className="underline decoration-1">Address: </span>
+            <span className="pl-2">{user.address}</span>
+          </h2>
         </div>
-        <h1 className="OrdersTitle">My Orders</h1>
-      </div>
-      <div>
-        {orders?.map((order, idx) => {
-          return (
-            <div className="OrderCard" key={"order idx:" + idx}>
-              <h1 className="OrderNumber">
-                Order <span className="Info">#{order.id}</span>
-              </h1>
-              {order?.items.map((item, idx) => {
-                return (
-                  <div key={"item idx:" + idx}>
-                    <h2 className="OrderInfo">
-                      Item: <span className="Info">{item.product_name}</span>
-                    </h2>
-                    <h3 className="ItemInfo">
-                      Size: <span className="Info">{item.product_size}</span>{" "}
-                      Quantity: <span className="Info">{item.quantity}</span>{" "}
-                      Color: <span className="Info">{item.product_color}</span>{" "}
-                      Fragrance:{" "}
-                      <span className="Info">{item.product_fragrance}</span>
-                    </h3>
-                  </div>
-                );
-              })}
-              <h2 className="OrderInfo">
-                Order Status: <span className="Info">{order.status}</span>
-              </h2>
-            </div>
-          );
-        })}
+        <Link
+          to={`/admin/orders`}
+          className="inline-block rounded-3xl px-3 pb-2.5 pt-3 text-sm font-light uppercase bg-blue-600"
+        >
+          My Orders
+        </Link>
+        <Link
+          to={`/Cart`}
+          className="inline-block rounded-3xl px-3 pb-2.5 pt-3 text-sm font-light uppercase bg-blue-600 float-right"
+        >
+          My Cart
+        </Link>
+        <div className="underline text-4xl text-center m-4">All orders</div>
+        {order.length &&
+          order.map((order) => {
+            let date = order.orderDate;
+            let orderTime = new Date(date);
+            return (
+              <div key={order.id} className="m-6">
+                <h3>
+                  Order #{order.id}: {orderTime.toLocaleString()}
+                </h3>
+                <p>{order.status}</p>
+              </div>
+            );
+          })}
       </div>
     </div>
   );

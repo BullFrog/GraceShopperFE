@@ -30,7 +30,9 @@ const GuestCheckoutForm = ({setCart}) => {
       <form onSubmit={handleSubmit} className="flex-col text-center mt-8">
         <div className="flex-col">
           <div>
-            <label htmlFor="name">Name:</label>
+            <label className="text-white" htmlFor="name">
+              Name:{" "}
+            </label>
             <input
               id="name"
               type="text"
@@ -41,7 +43,9 @@ const GuestCheckoutForm = ({setCart}) => {
             ></input>
           </div>
           <div className="m-4">
-            <label htmlFor="email">Email:</label>
+            <label className="text-white" htmlFor="email">
+              Email:{" "}
+            </label>
             <input
               id="email"
               type="text"
@@ -52,7 +56,9 @@ const GuestCheckoutForm = ({setCart}) => {
             ></input>
           </div>
           <div>
-            <label htmlFor="address">Address:</label>
+            <label className="text-white" htmlFor="address">
+              Address:{" "}
+            </label>
             <input
               id="address"
               type="text"
@@ -64,7 +70,9 @@ const GuestCheckoutForm = ({setCart}) => {
           </div>
         </div>
         <div>
-          <button className="underline mt-2">Submit Order</button>
+          <button className="underline mt-2 inline-block rounded-3xl px-3 pb-2.5 pt-3 text-sm font-dark  bg-blue-600 text-white">
+            Submit Order
+          </button>
         </div>
       </form>
     );

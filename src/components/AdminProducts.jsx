@@ -74,7 +74,7 @@ const ProductCard = ({ product, token, getAllProducts }) => {
       <p className="ml-4 font-light">{product.description}</p>
       <img
         onClick={handleClick}
-        className="ml-3 rounded-xl"
+        className="pl-3 pr-3"
         src={product.image}
         alt={product.name}
       />

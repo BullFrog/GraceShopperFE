@@ -40,7 +40,7 @@ const getOrderById = async (orderId, token) => {
 //needs user's token
 const getUserOrders = async (token) => {
     try {
-        const request = await fetch(`${API_URL}/me/orders`, {
+        const request = await fetch(`${API_URL}/users/me/orders`, {
             headers: {
                 'ContentType': 'application/json',
                 'Authorization': `Bearer ${token}`

@@ -66,7 +66,7 @@ const AdminLogin = () => {
             }}
           ></input>
 
-          <button className="inline-block rounded px-3 pb-2.5 pt-3 text-sm font-medium uppercase bg-blue-600 text-white">
+          <button className="inline-block rounded-3xl px-3 pb-2.5 pt-3 text-sm font-medium uppercase bg-blue-600 text-white">
             Login
           </button>
         </div>
