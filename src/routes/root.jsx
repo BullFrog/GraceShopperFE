@@ -102,7 +102,7 @@ export default function Root() {
         <Link to={"/admin/login"} className="ml-80 mt-7">
           Admin Login
         </Link>
-        <Link to={`/admin/orders/${order.id}`} className="ml-80 mt-7">Orders</Link>
+        <Link to={`/Profile`} className="ml-80 mt-7">Orders</Link>
       </body>
     </div>
   );
