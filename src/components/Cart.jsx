@@ -32,7 +32,7 @@ const Cart = () => {
       return total + itemTotal;
     }, 0);
     return (
-      <div className="bg-gradient-to-t from-black to-grey-700">
+      <div className="bg-gradient-to-t from-black to-grey-700 h-screen">
         <h3 className="text-3xl text-center m-6">
           Here&apos;s what you&apos;ve got so far:
         </h3>
