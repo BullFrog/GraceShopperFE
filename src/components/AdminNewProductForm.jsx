@@ -43,7 +43,7 @@ const AdminNewProductForm = ({token, getAllProducts}) => {
 
   return (
     <>
-      <div className="flex-col text-center">
+      <div className="flex-col text-center border-4 p-2 border-black">
         <div className="text-center underline m-2">New product:</div>
         <form className="text-center flex-col" onSubmit={handleSubmit}>
           <div className="m-2">
