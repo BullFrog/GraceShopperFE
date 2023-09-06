@@ -113,9 +113,9 @@ const updateProduct = async (token, productId, updatedProduct) => {
            "Content-type": "application/json",
            'Authorization': `Bearer ${token}`,
          },
-         body: JSON.stringify({
+         body: JSON.stringify(
            updatedProduct
-         }),
+         ),
        }
      );
      const result = await request.json();
