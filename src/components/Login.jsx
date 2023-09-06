@@ -21,7 +21,6 @@ const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
 
   async function handleSubmit(event) {
     event.preventDefault();
-
     try {
       const NewUser = {
         email: email,
@@ -33,6 +32,8 @@ const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
       }
 
       setToken(newUserToken.token);
+      console.log(newUserToken)
+      console.log(token)
       localStorage.setItem("token", newUserToken.token);
       localStorage.setItem("email", NewUser.email)
       setIsLoggedIn(true);
@@ -48,7 +49,7 @@ const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
 
   return (
     <div
-      className="loginContainer w-screen h-screen flex justify-center items-center
+      className="w-screen h-screen flex justify-center items-center
     bg-gradient-to-t from-black to-grey-700"
     >
       <form
@@ -85,7 +86,7 @@ const { setIsLoggedIn, setCart, token, setToken } = useOutletContext();
           ></input>
 
           <p>{errorMessage}</p>
-          <button className="inline-block rounded px-3 pb-2.5 pt-3 text-sm font-medium uppercase bg-blue-600 text-white">
+          <button className="inline-block rounded-3xl px-3 pb-2.5 pt-3 text-sm font-medium uppercase bg-blue-600 text-white">
             Login
           </button>
         </div>

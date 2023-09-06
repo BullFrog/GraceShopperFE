@@ -1,97 +1,46 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
-// import { getUserOrders } from "../api/Orders";
-import { getUserCart } from "../api/Cart";
-import { useOutletContext } from "react-router-dom/dist";
+import { Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 const Profile = () => {
-  // const [orders, setOrders] = useState([]);
-  const { token } = useOutletContext();
-
-  // async function getPreviousOrders() {
-  //   try {
-  //     const result = await getUserOrders(token);
-  //       console.log(result)
-  //     if (result) {
-  //       setOrders(result);
-  //     }
-  //   } catch (error) {
-  //     console.log("error getting previous orders", error);
-  //   }
-  // }
-
-  const [cart,setCart] = useState([]);
-  
-  
-  async function getUsersCart() {
-    try {
-      const result = await getUserCart(token);
-      console.log(token)
-        console.log(result)
-      if (result) {
-        setCart(result);
-      }
-    } catch (error) {
-      console.log("error getting previous orders", error);
-    }
-  }
-
-  useEffect(() => {
-    // getPreviousOrders();
-    getUsersCart();
-  }, []);
+  const [order] = useState([]);
+  const {user} = useOutletContext();
 
   return (
-    <div id="profile">
-      <div id="ProfileHeader">
-        <h1 className="ProfileTitle">My Profile</h1>
-        <div className="UserCard">
-          <h2 className="UserInfo">
-            Name: <span className="Info"></span>
+    <div
+      className="w-screen h-screen flex justify-center items-center
+    bg-gradient-to-t from-black to-grey-700"
+    >
+      <div className="p-10 bg-black rounded-xl drop-shadow-lg space-y-5 text-white">
+        <h1 className="text-3xl text-center pb-3">My Profile</h1>
+        <div>
+          <h2 className="w-96 px-3 py-2 rounded-md border border-slate-400">
+            <span className="underline decoration-1">Name: </span>
+            <span className="pl-2">{user.name}</span>
           </h2>
-          <h3 className="UserInfo">
-            Username: <span className="Info"></span>
-          </h3>
-          <h3 className="UserInfo">
-            Email: <span className="Info"></span>
-          </h3>
-          {/* <Link to={`edit-profile/${user.id}`} state={user}>
-            <button className="Button">Edit Username/Email</button>
-          </Link> */}
+          <h2 className="w-96 px-3 py-2 rounded-md border border-slate-400">
+            <span className="underline decoration-1">Email: </span>
+            <span className="pl-2">{user.email}</span>
+          </h2>
+          <h2 className="w-96 px-3 py-2 rounded-md border border-slate-400">
+            <span className="underline decoration-1">Address: </span>
+            <span className="pl-2">{user.address}</span>
+          </h2>
         </div>
-        <h1 className="OrdersTitle">My Orders</h1>
+        <Link
+          to={`/admin/orders/${order.id}`}
+          className="inline-block rounded-3xl px-3 pb-2.5 pt-3 text-sm font-light uppercase bg-blue-600"
+        >
+          My Orders
+        </Link>
+        <Link
+          to={`/Cart`}
+          className="inline-block rounded-3xl px-3 pb-2.5 pt-3 text-sm font-light uppercase bg-blue-600 float-right"
+        >
+          My Cart
+        </Link>
       </div>
-      {/* <div>
-        {orders.map((order, idx) => {
-          return (
-            <div className="OrderCard" key={"order idx:" + idx}>
-              <h1 className="OrderNumber">
-                Order <span className="Info">#{order.id}</span>
-              </h1>
-              {order.items.map((item, idx) => {
-                return (
-                  <div key={"item idx:" + idx}>
-                    <h2 className="OrderInfo">
-                      Item: <span className="Info">{item.product_name}</span>
-                    </h2>
-                    <h3 className="ItemInfo">
-                      Size: <span className="Info">{item.product_size}</span>{" "}
-                      Quantity: <span className="Info">{item.quantity}</span>{" "}
-                      Color: <span className="Info">{item.product_color}</span>{" "}
-                      Fragrance:{" "}
-                      <span className="Info">{item.product_fragrance}</span>
-                    </h3>
-                  </div>
-                );
-              })}
-              <h2 className="OrderInfo">
-                Order Status: <span className="Info">{order.status}</span>
-              </h2>
-            </div>
-          );
-        })}
-      </div> */}
     </div>
   );
 };
