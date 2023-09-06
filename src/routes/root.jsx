@@ -37,7 +37,7 @@ export default function Root() {
                   isActive ? "active" : isPending ? "pending" : ""
                 }
               >
-                Grace Shopper
+                Empire Gaming
               </NavLink>
 
               <div className=" flex items-center">
