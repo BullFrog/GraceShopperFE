@@ -26,13 +26,14 @@ const Register = () => {
       const newUserToken = await RegisterPerson(NewUser);
       if (newUserToken.error) {
         throw new Error(newUserToken.message);
-      }
+      } else {
       setToken(newUserToken.token);
-      localStorage.setItem("The Goods", newUserToken.token);
+      localStorage.setItem("token", newUserToken.token);
       setIsLoggedIn(true);
       if (newUserToken) {
-        navigate("/Login");
+        navigate("/");
       }
+    }
     } catch (err) {
       setErrorMessage(err.message);
     }

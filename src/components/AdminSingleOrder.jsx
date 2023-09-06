@@ -27,11 +27,13 @@ const AdminSingleOrder = () => {
         getOrder()
         console.log(update)
     }
-
+    
+    if (order.id) {
     const subtotal = order.products.reduce((total, currentItem) => {
       const itemTotal = currentItem.price * currentItem.quantity;
       return total + itemTotal;
     }, 0);
+    
     return (
       <>
         <div className="text-4xl m-4">Order #{order.id}</div>
@@ -69,6 +71,7 @@ const AdminSingleOrder = () => {
         </div>
       </>
     );
+          }
 }
 
 export default AdminSingleOrder

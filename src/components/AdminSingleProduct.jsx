@@ -87,15 +87,17 @@ const AdminSingleProduct = () => {
                 id="name"
                 onChange={handleChange}
               ></input>
-              <label htmlFor="category" className="text-xl">
-                Category:
-              </label>
-              <input
-                value={updatedProduct.category}
-                className="text-black"
-                id="category"
-                onChange={handleChange}
-              ></input>
+              <div className="m-2">
+                <label htmlFor="category" className="text-xl">
+                  Category:
+                </label>
+                <input
+                  value={updatedProduct.category}
+                  className="text-black"
+                  id="category"
+                  onChange={handleChange}
+                ></input>
+              </div>
             </h3>
 
             <label
@@ -116,15 +118,17 @@ const AdminSingleProduct = () => {
               src={product.image}
               alt={product.name}
             />
-            <label htmlFor="image">New link to image:</label>
-            <input
-              type="text"
-              value={updatedProduct.image}
-              className="text-black"
-              id="image"
-              onChange={handleChange}
-            />
-            <div>
+            <div className="m-2">
+              <label htmlFor="image">New link to image:</label>
+              <input
+                type="text"
+                value={updatedProduct.image}
+                className="text-black"
+                id="image"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="m-2">
               <label className="font-dark ">Price: $</label>
               <input
                 htmlFor="price"
