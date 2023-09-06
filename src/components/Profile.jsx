@@ -1,25 +1,45 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
+// import { getUserOrders } from "../api/Orders";
+import { getUserCart } from "../api/Cart";
+import { useOutletContext } from "react-router-dom/dist";
 
-import { getUserOrders } from "../api/Orders";
+const Profile = () => {
+  // const [orders, setOrders] = useState([]);
+  const { token } = useOutletContext();
 
-const Profile = ({ token, user }) => {
-  const [orders, setOrders] = useState([]);
+  // async function getPreviousOrders() {
+  //   try {
+  //     const result = await getUserOrders(token);
+  //       console.log(result)
+  //     if (result) {
+  //       setOrders(result);
+  //     }
+  //   } catch (error) {
+  //     console.log("error getting previous orders", error);
+  //   }
+  // }
 
-  async function getPreviousOrders() {
+  const [cart,setCart] = useState([]);
+  
+  
+  async function getUsersCart() {
     try {
-      const result = await getUserOrders(token);
-
-      if (result.success) {
-        setOrders(result.orders);
+      const result = await getUserCart(token);
+      console.log(token)
+        console.log(result)
+      if (result) {
+        setCart(result);
       }
     } catch (error) {
       console.log("error getting previous orders", error);
     }
   }
+
   useEffect(() => {
-    getPreviousOrders();
+    // getPreviousOrders();
+    getUsersCart();
   }, []);
 
   return (
@@ -28,28 +48,28 @@ const Profile = ({ token, user }) => {
         <h1 className="ProfileTitle">My Profile</h1>
         <div className="UserCard">
           <h2 className="UserInfo">
-            Name: <span className="Info">{user.name}</span>
+            Name: <span className="Info"></span>
           </h2>
           <h3 className="UserInfo">
-            Username: <span className="Info">{user.username}</span>
+            Username: <span className="Info"></span>
           </h3>
           <h3 className="UserInfo">
-            Email: <span className="Info">{user.email}</span>
+            Email: <span className="Info"></span>
           </h3>
-          <Link to={`edit-profile/${user.id}`} state={user}>
+          {/* <Link to={`edit-profile/${user.id}`} state={user}>
             <button className="Button">Edit Username/Email</button>
-          </Link>
+          </Link> */}
         </div>
         <h1 className="OrdersTitle">My Orders</h1>
       </div>
-      <div>
-        {orders?.map((order, idx) => {
+      {/* <div>
+        {orders.map((order, idx) => {
           return (
             <div className="OrderCard" key={"order idx:" + idx}>
               <h1 className="OrderNumber">
                 Order <span className="Info">#{order.id}</span>
               </h1>
-              {order?.items.map((item, idx) => {
+              {order.items.map((item, idx) => {
                 return (
                   <div key={"item idx:" + idx}>
                     <h2 className="OrderInfo">
@@ -71,7 +91,7 @@ const Profile = ({ token, user }) => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };

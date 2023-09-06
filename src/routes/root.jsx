@@ -33,11 +33,7 @@ const [admin, setAdmin] = useState(false)
               className={({ isActive, isPending }) =>
                 isActive ? "active" : isPending ? "pending" : ""
               }
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-              token={token}
-              user={user}
-              setToken={setToken}
+   
             >
               Grace Shopper
             </NavLink>
@@ -46,11 +42,7 @@ const [admin, setAdmin] = useState(false)
               <div className="mr-10">
                 <Link
                   to={"/"}
-                  isLoggedIn={isLoggedIn}
-                  setIsLoggedIn={setIsLoggedIn}
-                  token={token}
-                  user={user}
-                  setToken={setToken}
+      
                   className="text-white text-2xl mr-10"
                 >
                   Home
@@ -68,7 +60,6 @@ const [admin, setAdmin] = useState(false)
                     </Link>
                     <Link
                       to={"/Logout"}
-                      setIsLoggedIn={setIsLoggedIn}
                       className="text-white text-2xl"
                     >
                       Logout
@@ -78,8 +69,7 @@ const [admin, setAdmin] = useState(false)
                   <>
                     <Link
                       to={"/Register"}
-                      setIsLoggedIn={setIsLoggedIn}
-                      setToken={setToken}
+          
                       className="text-white text-2xl mr-10"
                     >
                       Register
@@ -87,8 +77,7 @@ const [admin, setAdmin] = useState(false)
 
                     <Link
                       to={"/Login"}
-                      setIsLoggedIn={setIsLoggedIn}
-                      setToken={setToken}
+      
                       className="text-white text-2xl mr-10"
                     >
                       Login
@@ -118,8 +107,7 @@ const [admin, setAdmin] = useState(false)
         <span className="mt-7">Account</span>
         <Link
           to={"/admin/login"}
-          setIsLoggedIn={setIsLoggedIn}
-          setToken={setToken}
+
           className="ml-80 mt-7"
         >
           Admin Login
