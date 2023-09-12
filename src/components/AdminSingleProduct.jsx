@@ -68,32 +68,34 @@ const AdminSingleProduct = () => {
   if (product.id) {
   return (
     <>
-      <div className="text-center mt-5">
+      <div className="text-center mt-3">
         <button
-          className="text-red-500 font-bold text-4xl"
+          className="inline-block rounded-3xl px-3 pb-2.5 pt-3 text-3xl font-medium uppercase bg-black text-red-500"
           onClick={handleDelete}
         >
           Delete product
         </button>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="w-screen h-screen bg-gradient-to-t from-black to-grey-700 text-white flex flex-wrap place-content-center">
-          <div className="w-2/6 h-4/5 bg-black rounded-3xl drop-shadow-lg flex flex-wrap place-content-center ">
+        <div className="w-screen h-screen bg-gradient-to-t from-black to-grey-700 text-white flex place-content-center overflow-y-scroll">
+          <div className="mt-3 w-2/6 h-fit bg-black rounded-3xl flex flex-wrap">
             <h3 className="text-center w-screen mt-4 place-content-center text-2xl font-bold">
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="name" className="text-2xl">
+                Name:{" "}
+              </label>
               <input
                 value={updatedProduct.name}
-                className="text-black"
+                className="text-black bg-gray-300"
                 id="name"
                 onChange={handleChange}
               ></input>
               <div className="m-2">
-                <label htmlFor="category" className="text-xl">
-                  Category:
+                <label htmlFor="category" className="text-2xl">
+                  Category:{" "}
                 </label>
                 <input
                   value={updatedProduct.category}
-                  className="text-black"
+                  className="text-black bg-gray-300"
                   id="category"
                   onChange={handleChange}
                 ></input>
@@ -102,44 +104,47 @@ const AdminSingleProduct = () => {
 
             <label
               htmlFor="description"
-              className="ml-4 font-light place-content-center m-2"
+              className="text-center w-screen text-3xl font-bold underline decoration-1"
             >
               Description:
             </label>
             <input
               value={updatedProduct.description}
-              className="text-black w-72"
+              className="m-2 font-light text-center flex flex-wrap w-screen text-xl bg-black"
               id="description"
               onChange={handleChange}
             ></input>
             <img
-              className="ml-2 mr-2 w-11/12 h-4/6 rounded-xl w-96 flex flex-wrap "
+              className="ml-2 mr-2 w-11/12 h-4/6 rounded-xl w-96 w-screen"
               id="image"
               src={product.image}
               alt={product.name}
             />
-            <div className="m-2">
-              <label htmlFor="image">New link to image:</label>
+            <div className="ml-4 w-screen">
+              <label htmlFor="image">New link to image: </label>
               <input
                 type="text"
                 value={updatedProduct.image}
-                className="text-black"
+                className="m-1 text-xl text-black bg-gray-300"
                 id="image"
                 onChange={handleChange}
               />
             </div>
-            <div className="m-2">
-              <label className="font-dark ">Price: $</label>
+            <div className="ml-4 w-screen">
+              <label className="">Price: $</label>
               <input
                 htmlFor="price"
                 type="number"
                 value={updatedProduct.price}
-                className="text-black w-12"
+                className="m-1 text-xl text-black bg-gray-300"
                 id="price"
                 onChange={handleChange}
               ></input>
             </div>
-            <button className="m-4 font-bold text-blue-500" type="submit">
+            <button
+              className="m-4 font-bold text-blue-500 text-xl"
+              type="submit"
+            >
               Update product
             </button>
           </div>

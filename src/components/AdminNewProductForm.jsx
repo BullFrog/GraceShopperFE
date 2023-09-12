@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { createProduct } from "../api/Admin";
 import { useState } from "react";
 
@@ -43,11 +44,13 @@ const AdminNewProductForm = ({token, getAllProducts}) => {
 
   return (
     <>
-      <div className="flex-col text-center border-4 p-2 border-black">
-        <div className="text-center underline m-2">New product:</div>
+      <div className="flex-col text-center border-4 bg-black p-2 border-blue-500 rounded-2xl">
+        <div className="text-center underline m-2 text-2xl text-white">New product:</div>
         <form className="text-center flex-col" onSubmit={handleSubmit}>
           <div className="m-2">
-            <label htmlFor="name">Product Name:</label>
+            <label htmlFor="name" className="text-white">
+              Product Name:{" "}
+            </label>
             <input
               placeholder="new product name"
               className=""
@@ -59,7 +62,9 @@ const AdminNewProductForm = ({token, getAllProducts}) => {
             ></input>
           </div>
           <div className="m-2">
-            <label htmlFor="category">Product category:</label>
+            <label htmlFor="category" className="text-white">
+              Product category:{" "}
+            </label>
             <input
               placeholder="new product category"
               className=""
@@ -71,7 +76,9 @@ const AdminNewProductForm = ({token, getAllProducts}) => {
             ></input>
           </div>
           <div className="m-2">
-            <label htmlFor="description">Product description:</label>
+            <label htmlFor="description" className="text-white">
+              Product description:{" "}
+            </label>
             <input
               placeholder="new product description"
               className=""
@@ -83,7 +90,9 @@ const AdminNewProductForm = ({token, getAllProducts}) => {
             ></input>
           </div>
           <div className="m-2">
-            <label htmlFor="image">Link to image:</label>
+            <label htmlFor="image" className="text-white">
+              Link to image:{" "}
+            </label>
             <input
               placeholder="new product image"
               className=""
@@ -95,7 +104,9 @@ const AdminNewProductForm = ({token, getAllProducts}) => {
             ></input>
           </div>
           <div className="m-2">
-            <label htmlFor="price">Product price:</label>
+            <label htmlFor="price" className="text-white">
+              Product price:{" "}
+            </label>
             <input
               placeholder="new product price"
               className=""
@@ -107,7 +118,9 @@ const AdminNewProductForm = ({token, getAllProducts}) => {
             ></input>
           </div>
           <div className="m-2">
-            <label htmlFor="inventory">Initial inventory:</label>
+            <label htmlFor="inventory" className="text-white">
+              Initial inventory:{" "}
+            </label>
             <input
               placeholder="new product inventory"
               className=""
@@ -120,7 +133,7 @@ const AdminNewProductForm = ({token, getAllProducts}) => {
           </div>
           <button
             type="submit"
-            className="mt-3 text-xl border-black border-2 rounded-lg"
+            className="mt-3 text-xl border-blue-500 border-2 rounded-lg text-blue-500 bg-black"
           >
             -Create product-
           </button>

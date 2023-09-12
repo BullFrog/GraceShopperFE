@@ -59,24 +59,26 @@ const SingleProduct = () => {
 
   let { productId } = useParams();
   return (
-    <div className="w-screen h-screen bg-gradient-to-t from-black to-grey-700 text-white flex flex-wrap place-content-center">
-      <div className="w-2/6 h-4/5 bg-black rounded-3xl drop-shadow-lg flex flex-wrap place-content-center ">
-        <h3 className="text-center w-screen mt-8 place-content-center h-14 text-xl font-bold">
+    <div className="w-screen h-screen overflow-y-scroll bg-gradient-to-t from-black to-grey-700 text-white flex place-content-center">
+      <div className="mt-8 w-2/6 h-fit bg-black rounded-3xl flex flex-wrap">
+        <h3 className="text-center w-screen mt-8 h-14 text-3xl font-bold">
           {product.name}
         </h3>
-        <p className="ml-4 font-light h-20 place-content-center">
+        <p className="ml-4 font-light h-20 flex place-content-center w-screen text-xl">
           {product.description}
         </p>
         <img
-          className="ml-2 mr-2 w-11/12 h-4/6 rounded-xl w-96 flex flex-wrap "
+          className="ml-2 mr-2 w-11/12 h-4/6 rounded-xl w-96 w-screen"
           id="image"
           src={product.image}
           alt={product.name}
         />
-        <p className="m-4 pb-4 font-dark ">Price: ${product.price}</p>
+        <p className="m-4 font-dark w-screen text-xl">
+          Price: ${product.price}
+        </p>
         <button
           onClick={handleButtonClick}
-          className="m-4 pb-4 font-bold text-blue-500"
+          className="m-4 font-bold text-blue-500 text-xl"
         >
           Add to Cart
         </button>

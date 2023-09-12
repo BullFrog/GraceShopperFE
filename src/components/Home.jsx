@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GetAllProducts } from "../api/GetAllProducts";
 import { useOutletContext } from "react-router-dom";
-import SidebarCart from "../components/CartSidebar";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -46,7 +45,6 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <SidebarCart cart={cart} />
       </div>
     </body>
   );
@@ -64,7 +62,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="w-56 h-max m-10 bg-black text-white rounded-3xl">
+    <div className="w-56 h-max m-10 bg-black text-white rounded-3xl border-2">
       <h3 onClick={handleClick} className="text-center text-lg font-bold">
         {product.name}
       </h3>
