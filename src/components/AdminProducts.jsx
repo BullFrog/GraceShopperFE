@@ -66,7 +66,7 @@ const ProductCard = ({ product, token, getAllProducts }) => {
   };
 
   return (
-    <div className="w-56 h-max m-3 bg-black  text-white rounded-3xl drop-shadow-lg">
+    <div className="w-56 h-max m-3 bg-black  text-white rounded-3xl drop-shadow-lg border-2">
       {product.active ? null : <p className="text-red-500 text-center">discontinued</p>}
       <h3 onClick={handleClick} className="text-center text-lg font-bold">
         {product.name}

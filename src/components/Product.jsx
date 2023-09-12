@@ -89,7 +89,7 @@ const ProductCard = ({ product, cart, setCart, isLoggedIn, token }) => {
   };
 
   return (
-    <div className="w-56 h-max m-3 bg-black text-white rounded-3xl drop-shadow-lg">
+    <div className="w-56 h-max m-3 bg-black text-white rounded-3xl drop-shadow-lg border-2">
       <h3 onClick={handleClick} className="text-center text-lg font-bold">
         {product.name}
       </h3>

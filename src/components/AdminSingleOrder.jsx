@@ -35,11 +35,11 @@ const AdminSingleOrder = () => {
     }, 0);
     
     return (
-      <>
-        <div className="text-4xl m-4">Order #{order.id}</div>
-        <div className="text-2xl ml-4">Status: {order.status}</div>
+      <div className="text-center h-screen w-screen bg-gradient-to-t from-black to-grey-700">
+        <div className="text-4xl m-4 mt-20">Order #{order.id}</div>
+        <div className="text-2xl">Status: {order.status}</div>
         <form className="m-4" onSubmit={handleSubmit}>
-          <label htmlFor="updatedStatus" className="">
+          <label htmlFor="updatedStatus" className="text-lg">
             Change status:
           </label>
           <input
@@ -50,28 +50,34 @@ const AdminSingleOrder = () => {
               setUpdatedStatus(event.target.value);
             }}
           ></input>
-          <button className="border-2 border-black rounded p-1" type="submit">
-            update
+          <button
+            className="border-2 border-blue-500 rounded p-1 bg-black text-blue-500"
+            type="submit"
+          >
+            Update
           </button>
         </form>
-        <div className="ml-4">Order placed on:</div>
-        <div className="ml-4">{orderTime.toLocaleString()}</div>
+        <div className="uppercase font-bold">Order placed on:</div>
+        <div className="font-bold">{orderTime.toLocaleString()}</div>
         <div className="flex-col text-center">
-          <div className="text-xl">Purchased by: {order.name}</div>
-          <div className="text-xl m-2">{order.email}</div>
+          <div className="text-xl mt-4">Purchased by: {order.name}</div>
+          <div className="text-xl mb-4">{order.email}</div>
           {order.products &&
             order.products.map((product) => {
               return (
-                <p key={product.id}>
+                <p key={product.id} className="font-bold">
                   {product.name} x {product.quantity} @ ${product.price}
                 </p>
               );
             })}
-          <p className="mt-2"> Order total: ${order.products && subtotal}</p>
+          <p className="mt-4 text-xl text-blue-500 font-bold underline decoration-2">
+            {" "}
+            Order total: ${order.products && subtotal}
+          </p>
         </div>
-      </>
+      </div>
     );
-          }
+  }
 }
 
 export default AdminSingleOrder
